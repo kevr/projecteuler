@@ -42,21 +42,16 @@ def collatz_iteration(n: int) -> int:
     return (3 * n) + 1
 
 
-def collatz(n: int) -> int:
-    if n <= 2:
-        return n
+def collatz(c: int, n: int, i: int = 0) -> int:
+    if c in memo:
+        memo[n] = i + memo.get(c)
+        return memo.get(n)
+    elif c == 1:
+        memo[n] = i
+        return i
 
-    i: int = 0  # Number of iterations
-    k: int = n
-    while k > 1:
-        if k in memo:
-            return i + memo.get(k)
-
-        i += 1
-        k = collatz_iteration(k)
-
-    memo[n] = i
-    return i
+    c = collatz_iteration(c)
+    return collatz(c, n, i + 1)
 
 
 def main():
@@ -64,7 +59,7 @@ def main():
     starting: int = 0
 
     for n in range(13, 1000000):
-        length = collatz(n)
+        length = collatz(n, n)
         if length > longest:
             longest = length
             starting = n
