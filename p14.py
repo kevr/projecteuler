@@ -22,10 +22,6 @@ Solution pseudocode:
         Find the number of memoized iterations in the Collatz sequence
     Return the length of the longest sequence found
 
-Requirements:
-    - We must test every single number in the iteration criteria
-    - We can shortcut tests by relying on memoized lengths
-
 Copyright (C) 2022 Kevin Morris <kevr@0cost.org>
 All Rights Reserved.
 """
